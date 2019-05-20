@@ -33,6 +33,9 @@ import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefrom
 import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import RemoveFormat from '@ckeditor/ckeditor5-remove-format/src/removeformat';
+import Highlight from '@ckeditor/ckeditor5-highlight/src/highlight';
+import Font from '@ckeditor/ckeditor5-font/src/font';
+import Clipboard from '@ckeditor/ckeditor5-clipboard/src/clipboard';
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -63,7 +66,10 @@ ClassicEditor.builtinPlugins = [
 	PasteFromOffice,
 	Table,
 	TableToolbar,
-	RemoveFormat
+	RemoveFormat,
+	Highlight,
+	Font,
+	Clipboard
 ];
 
 // Editor configuration.
@@ -86,14 +92,24 @@ ClassicEditor.defaultConfig = {
 			'|',
 			'blockQuote',
 			'|',
-			'heading'
+			'heading',
+			'|',
+			'highlight:yellowMarker',
+			'fontSize'
 		]
 	},
 	image: {
-		toolbar: ['imageStyle:full', 'imageStyle:side', '|', 'imageTextAlternative']
+		toolbar: [ 'imageStyle:full', 'imageStyle:side', '|', 'imageTextAlternative' ]
 	},
 	table: {
-		contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells']
+		contentToolbar: [ 'tableColumn', 'tableRow', 'mergeTableCells' ]
+	},
+	fontSize: {
+		options: [
+			'small',
+			'default',
+			'big'
+		]
 	},
 	// This value must be kept in sync with the language defined in webpack.config.js.
 	language: 'en'
